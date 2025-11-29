@@ -9,7 +9,11 @@ const products = [
    { id: 6, name: "Wooden bowl with lid", price: "₹2000", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSD1X3Cr4tVQls22iZMnNa66n0Ji3i65bQJcg&s" },
  { id: 7, name: "ancient carved bowl", price: "₹900", image: "https://www.balicargo-company.com/images/tribbwl3.jpg" },
    { id: 8, name: "panja landa woodwork", price: "₹5000", image: "https://www.gitagged.com/wp-content/uploads/2018/06/Wooden-Crafts-Online-GI-TAGGED-1.jpg" },
-  
+  { id: 9, name: "African tribal carved wood", price: "₹900", image: "https://i.etsystatic.com/19851401/r/il/b8ae75/2608124717/il_570xN.2608124717_8lbe.jpg" },
+   { id: 10, name: "fish hook", price: "₹600", image: "https://i.etsystatic.com/21785784/r/il/8c697a/6757965906/il_fullxfull.6757965906_i2bw.jpg" },
+   { id: 11, name: "gift hamper", price: "₹1400", image: "https://athirappillytribalvalley.com/image/cache/catalog/products/giftbox-01-1000x1000.jpg" },
+   { id: 12, name: "Mithun and hornbill", price: "₹7000", image: "https://static2.tripoto.com/media/filter/tst/img/489197/TripDocument/1561445973_wood_carv6.jpg" },
+
 ];
 
 const Woodcraft = () => (
