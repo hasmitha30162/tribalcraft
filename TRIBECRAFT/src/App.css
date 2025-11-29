@@ -1,0 +1,281 @@
+/* GLOBAL STYLES */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  height: 70px;
+  background: white;
+  border-bottom: 1px solid #ddd;
+  gap: 20px;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  color: #0d6efd;
+}
+
+.search-bar {
+  display: flex;
+  width: 700px;/* flexible width */
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+}
+
+.search-bar button {
+  padding: 10px 20px;
+  background: #0d6efd;
+  color: white;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+}
+
+.action-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-left: 220px; 
+}
+
+.link {
+  cursor: pointer;
+  font-size: 15px;
+  text-decoration: none;
+  color: #000;
+}
+
+.link:hover {
+  color: #0d6efd;
+}
+
+/* CATEGORY BAR */
+.category-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  height: 60px;
+  border-bottom: 1px solid #ddd;
+  background: #fff;
+}
+
+.category-bar p {
+  cursor: pointer;
+}
+
+.crafts-container {
+  position: relative;
+}
+
+.crafts-button {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.crafts-dropdown {
+  position: absolute;
+  top: 45px;
+  left: 0;
+  width: 220px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+  z-index: 10;
+}
+
+.crafts-dropdown p {
+  padding: 10px;
+  margin: 0;
+  cursor: pointer;
+}
+
+.crafts-dropdown p:hover {
+  background: #f4f4f4;
+}
+
+/* HOMEPAGE BANNER */
+.homepage-banner {
+  width: 100%;
+  height: calc(100vh - 130px);
+  background: linear-gradient(to right, #005aa7, #51c5ff);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+
+.homepage-banner h1 {
+  font-size: 40px;
+}
+
+.homepage-banner p {
+  font-size: 20px;
+}
+
+/* SIGNIN PAGE */
+.signin-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #f4f4f4;
+}
+
+.signin-form {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  padding: 30px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.signin-form label {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.signin-form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.signin-form button {
+  margin-top: 20px;
+  padding: 10px;
+  background: #0d6efd;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.signin-form button:hover {
+  background: #0056b3;
+}
+
+.forgot-password {
+  margin-top: 5px;
+  font-size: 13px;
+  color: #0d6efd;
+  cursor: pointer;
+}
+
+.signup-link {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.signup-link a {
+  color: #0d6efd;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* PRODUCTS PAGE */
+.products-container {
+  padding: 20px 40px;
+}
+
+.products-container h2 {
+  margin-bottom: 20px;
+  color: #0d6efd;
+  text-align: center;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.product-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  position: relative;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-image {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.product-image .favourite {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: red;
+  font-size: 20px;
+  opacity: 0;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.product-image:hover .favourite {
+  opacity: 1;
+}
+
+.price {
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.product-buttons {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+}
+
+.product-buttons button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.product-buttons .buy-now {
+  background: #0d6efd;
+  color: white;
+}
+
+.product-buttons button:hover {
+  opacity: 0.9;
+}
