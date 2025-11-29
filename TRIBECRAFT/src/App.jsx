@@ -92,7 +92,7 @@ const HomePage = () => {
       {/* CATEGORY BAR */}
       <nav className="category-bar">
         <Link to="/clothing"><p>Clothing</p></Link>
-        <Link to="/textiles"><p>Textiles & Weaving</p></Link>
+        <Link to="/textiles"><p>Paintings</p></Link>
         <Link to="/jewelry"><p>Jewelry & Accessories</p></Link>
         <Link to="/woodcraft"><p>Wooden Carvings</p></Link>
 
