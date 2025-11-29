@@ -13,7 +13,7 @@ const products = [
   { id: 10, name: "Ethnic Afghan Kuchi Handmade Dress", price: "₹1500", image: "" },
   { id: 11, name: "Ethnic Afghan Kuchi Handmade Dress", price: "₹1500", image: "" },
   { id: 12, name: "Ethnic Afghan Kuchi Handmade Dress", price: "₹1500", image: "" },
-    { id: 12, name: "Ethnic Afghan Kuchi Handmade Dress", price: "₹1500", image: "" }
+    { id: 13, name: "Ethnic Afghan Kuchi Handmade Dress", price: "₹1500", image: "" }
 ];
 const Clothes = () => (
   <div className="products-container">
