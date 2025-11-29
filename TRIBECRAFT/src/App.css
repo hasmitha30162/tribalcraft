@@ -130,7 +130,7 @@ html, body, #root {
 /* HOMEPAGE BANNER */
 .homepage-banner {
   width: 100%;
-  height: calc(100vh - 130px);
+  height: 50vh;
   background: linear-gradient(to right, #005aa7, #51c5ff);
   display: flex;
   flex-direction: column;

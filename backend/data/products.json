@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "name": "Handwoven Tribal Shirt",
+    "category": "Clothing",
+    "price": 29.99,
+    "description": "Traditional handwoven shirt made by tribal artisans.",
+    "image": ""
+  },
+  {
+    "id": 2,
+    "name": "Woven Textile Shawl",
+    "category": "Textiles",
+    "price": 49.5,
+    "description": "Soft shawl with traditional patterns.",
+    "image": ""
+  },
+  {
+    "id": 3,
+    "name": "Beaded Necklace",
+    "category": "Jewelry",
+    "price": 19.99,
+    "description": "Hand-beaded necklace using natural materials.",
+    "image": ""
+  },
+  {
+    "id": 4,
+    "name": "Carved Wooden Bowl",
+    "category": "Woodcraft",
+    "price": 34.0,
+    "description": "Hand-carved wooden bowl for serving.",
+    "image": ""
+  }
+]

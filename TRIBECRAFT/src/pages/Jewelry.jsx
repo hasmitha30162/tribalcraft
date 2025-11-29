@@ -28,7 +28,7 @@ const Jewelry = () => (
           <h3>{product.name}</h3>
           <p className="price">{product.price}</p>
           <div className="product-buttons">
-            <button>Add to Cart</button>
+            <button onClick={() => addToCart(product)}>Add to Cart</button>
             <button className="buy-now">Buy Now</button>
           </div>
         </div>
