@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, createContext, useContext } from "react";
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from "react-router-dom";
 
 import Clothes from "./pages/Clothes";
@@ -6,24 +6,61 @@ import Textiles from "./pages/Textiles";
 import Jewelry from "./pages/Jewelry";
 import Woodcraft from "./pages/Woodcraft";
 
+// Auth Context
+const AuthContext = createContext();
+
+const AuthProvider = ({ children }) => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userEmail, setUserEmail] = useState("");
+
+  const login = (email) => {
+    setIsLoggedIn(true);
+    setUserEmail(email);
+    localStorage.setItem("userEmail", email);
+  };
+
+  const logout = () => {
+    setIsLoggedIn(false);
+    setUserEmail("");
+    localStorage.removeItem("userEmail");
+  };
+
+  return (
+    <AuthContext.Provider value={{ isLoggedIn, userEmail, login, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
+
+const useAuth = () => useContext(AuthContext);
+
 const App = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/signin" element={<SignInPage />} />
-        <Route path="/clothing" element={<Clothes />} />
-        <Route path="/textiles" element={<Textiles />} />
-        <Route path="/jewelry" element={<Jewelry />} />
-        <Route path="/woodcraft" element={<Woodcraft />} />
-      </Routes>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/signin" element={<SignInPage />} />
+          <Route path="/clothing" element={<Clothes />} />
+          <Route path="/textiles" element={<Textiles />} />
+          <Route path="/jewelry" element={<Jewelry />} />
+          <Route path="/woodcraft" element={<Woodcraft />} />
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 };
 
 // ----------------- HOME PAGE -----------------
 const HomePage = () => {
   const [craftsOpen, setCraftsOpen] = useState(false);
+  const { isLoggedIn, userEmail, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleSignOut = () => {
+    logout();
+    navigate("/");
+  };
 
   return (
     <div className="container">
@@ -40,7 +77,14 @@ const HomePage = () => {
         {/* Right Section */}
         <div className="action-links">
           <p className="link">Become a Seller</p>
-          <Link to="/signin" className="link">Sign In</Link>
+          {isLoggedIn ? (
+            <>
+              <p className="link user-email">{userEmail}</p>
+              <button onClick={handleSignOut} className="link signout-btn">Sign Out</button>
+            </>
+          ) : (
+            <Link to="/signin" className="link">Sign In</Link>
+          )}
           <p className="link">Basket</p>
         </div>
       </header>
@@ -84,11 +128,13 @@ const HomePage = () => {
 // ----------------- SIGN IN PAGE -----------------
 const SignInPage = () => {
   const navigate = useNavigate();
+  const { login } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSignIn = (e) => {
     e.preventDefault();
+    login(email);
     alert(`Signed in as: ${email}`);
     navigate("/");
   };
