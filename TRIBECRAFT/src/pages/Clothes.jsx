@@ -1,26 +1,4 @@
-// App.jsx
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Clothes from "./Clothes";
-import Checkout from "./Checkout";
-
-function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Clothes />} />
-        <Route path="/checkout" element={<Checkout />} />
-      </Routes>
-    </Router>
-  );
-}
-
-export default App;
-
-
-// Clothes.jsx  (your code with ONLY buy-now part updated)
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 const products = [
   { id: 1, name: "Boho Jacket", price: "₹1200", image: "https://5.imimg.com/data5/SELLER/Default/2025/6/521282553/ME/UY/QC/394432/suzani-embroidered-jacket-handmade-boho-jacket-vintage-coat-tribal-fashionwear-boutique-clothing.jpeg" },
@@ -40,15 +18,17 @@ const products = [
 
 const Clothes = () => {
   const [cart, setCart] = useState([]);
-  const navigate = useNavigate();
 
+  // Add to Cart Function
   const handleAddToCart = (product) => {
     setCart([...cart, product]);
-    alert(`${product.name} added to cart!`);
+    alert("ONE PRODUCT HAS BEEN ADDED TO YOUR CART");
   };
 
+  // Buy Now Function
   const handleBuyNow = (product) => {
-    navigate("/checkout", { state: product });
+    alert(`Proceeding to buy: ${product.name}`);
+    // navigate('/checkout', { state: product });
   };
 
   return (
@@ -88,33 +68,3 @@ const Clothes = () => {
 };
 
 export default Clothes;
-
-
-// Checkout.jsx (NEW PAGE)
-import React from "react";
-import { useLocation } from "react-router-dom";
-
-const Checkout = () => {
-  const { state: product } = useLocation();
-
-  if (!product) {
-    return <h2>No product selected</h2>;
-  }
-
-  return (
-    <div style={{ padding: "20px" }}>
-      <h2>Checkout</h2>
-
-      <img src={product.image} alt={product.name} style={{ width: "200px", borderRadius: "10px" }} />
-
-      <h3>{product.name}</h3>
-      <p style={{ fontSize: "20px" }}>{product.price}</p>
-
-      <button style={{ padding: "10px 20px", fontSize: "18px" }}>
-        Pay Now
-      </button>
-    </div>
-  );
-};
-
-export default Checkout;
