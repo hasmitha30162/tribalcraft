@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 const products = [
   { id: 1, name: "Boho Jacket", price: "₹1200", image: "https://5.imimg.com/data5/SELLER/Default/2025/6/521282553/ME/UY/QC/394432/suzani-embroidered-jacket-handmade-boho-jacket-vintage-coat-tribal-fashionwear-boutique-clothing.jpeg" },
@@ -12,29 +12,60 @@ const products = [
   { id: 9, name: "Slub Silk Hancrafted stole", price: "₹3500", image: "https://itokri.com/cdn/shop/files/3T1A6762_2ff4145c-4b1e-4b54-97e9-232018c69d7f.jpg?v=1757339469&width=480" },
   { id: 10, name: "Himalayan Handloom Scarf in Pure Wool", price: "₹5000", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIzYMG01eZQ3BzBjvHgVwOAPi4jSiBfh2xVw&s" },
   { id: 11, name: "Tribal pattern pure cotton saree", price: "₹3000", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhQMy4AoC5Xdqa5OFBLz1DmBaroBsUiavxHg&s" },
-  { id: 12, name: "OdiKala Sambalpuri Cotton Saree with Blouse Piece", price: "₹14575", image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.amazon.in%2FOdiKala-Sambalpuri-Cotton-Blouse-Mehendi%2Fdp%2FB0D95JXVJR&psig=AOvVaw1p1tfZ0xXAt4DFrmM-vtp2&ust=1764506489059000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCMi-u4yxl5EDFQAAAAAdAAAAABAK" },
-    { id: 13, name: "Kosa Silk Tribal Art Saree With Blue Border", price: "₹5545", image: "https://5.imimg.com/data5/ECOM/Default/2024/6/429327222/BH/KQ/QL/163930577/img-1012-500x500.jpg" }
+  { id: 12, name: "OdiKala Sambalpuri Cotton Saree with Blouse Piece", price: "₹14575", image: "https://m.media-amazon.com/images/I/81yPufKsarL._AC_UL480_FMwebp_QL65_.jpg" },
+  { id: 13, name: "Kosa Silk Tribal Art Saree With Blue Border", price: "₹5545", image: "https://5.imimg.com/data5/ECOM/Default/2024/6/429327222/BH/KQ/QL/163930577/img-1012-500x500.jpg" }
 ];
-const Clothes = () => (
-  <div className="products-container">
-    <h2>Clothing Products</h2>
-    <div className="products-grid">
-      {products.map((product) => (
-        <div className="product-card" key={product.id}>
-          <div className="product-image">
-            <img src={product.image} alt={product.name} />
-            <span className="favourite">&#9825;</span> {/* empty heart */}
+
+const Clothes = () => {
+  const [cart, setCart] = useState([]);
+
+  // Add to Cart Function
+  const handleAddToCart = (product) => {
+    setCart([...cart, product]);
+    alert(`${product.name} added to cart!`);
+  };
+
+  // Buy Now Function
+  const handleBuyNow = (product) => {
+    alert(`Proceeding to buy: ${product.name}`);
+    // You can redirect to a checkout page here
+    // navigate('/checkout', { state: product });
+  };
+
+  return (
+    <div className="products-container">
+      <h2>Clothing Products</h2>
+
+      <div className="products-grid">
+        {products.map((product) => (
+          <div className="product-card" key={product.id}>
+            
+            <div className="product-image">
+              <img src={product.image} alt={product.name} />
+              <span className="favourite">&#9825;</span>
+            </div>
+
+            <h3>{product.name}</h3>
+            <p className="price">{product.price}</p>
+
+            <div className="product-buttons">
+              <button onClick={() => handleAddToCart(product)}>
+                Add to Cart
+              </button>
+
+              <button
+                className="buy-now"
+                onClick={() => handleBuyNow(product)}
+              >
+                Buy Now
+              </button>
+            </div>
+
           </div>
-          <h3>{product.name}</h3>
-          <p className="price">{product.price}</p>
-          <div className="product-buttons">
-            <button>Add to Cart</button>
-            <button className="buy-now">Buy Now</button>
-          </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default Clothes;
